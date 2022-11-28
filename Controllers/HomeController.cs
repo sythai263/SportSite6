@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SportSite6.Models;
 
 namespace SportSite6.Controllers;
 
