@@ -8,15 +8,15 @@ public class Media
 	[Column("id", TypeName = "int")]
 	public int id { get; set; }
 	[Column("title", TypeName = "varchar(2000)")]
-	public string title { get; set; }
+	public string? title { get; set; }
 	[Column("original_name", TypeName = "varchar(2000)")]
-	public string originalName { get; set; }
+	public string? originalName { get; set; }
 
 	[Column("source", TypeName = "varchar(2000)")]
-	public string source { get; set; }
+	public string? source { get; set; }
 
 	[Column("alt_text", TypeName = "varchar(2000)")]
-	public string altText { get; set; }
+	public string? altText { get; set; }
 
 	[Column("media_type", TypeName = "smallint")]
 	public int mediaType { get; set; }

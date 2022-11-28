@@ -8,9 +8,10 @@ public class Category
 	[Column("id", TypeName = "int")]
 	public int id { get; set; }
 	[Column("title", TypeName = "varchar(2000)")]
-	public string title { get; set; }
+	public string? title { get; set; }
+
 	[Column("description", TypeName = "text")]
-	public string description { get; set; }
+	public string? description { get; set; }
 
 	[Column("approve", TypeName = "tinyint")]
 	public Int16 approve { get; set; }

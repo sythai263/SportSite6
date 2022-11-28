@@ -18,16 +18,16 @@ services:
       PMA_PASSWORD: Root123
     ports:
       - "8080:80"
-  webapp:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    depends_on:
-      - db
-    ports:
-      - "5000:80"
-    restart: always
-    command: dotnet watch run
-    environment:
-      - DBHOST=db
-      - ASPNETCORE_ENVIRONMENT=Development
+  # webapp:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   depends_on:
+  #     - db
+  #   ports:
+  #     - "5000:80"
+  #   restart: always
+  #   command: dotnet watch run
+  #   environment:
+  #     - DBHOST=db
+  #     - ASPNETCORE_ENVIRONMENT=Development
