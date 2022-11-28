@@ -1,0 +1,37 @@
+{
+	"branch": "Sport Site",
+	"copyright": "Copyright SportSite ©",
+	"logo": "img/core-img/logo.png",
+	"navigates": [
+		{
+			"display": "Trang chủ",
+			"slug": "/"
+		},
+		{
+			"display": "Bóng đá",
+			"slug": "/bong-da"
+		},
+		{
+			"display": "Quần vợt",
+			"slug": "/quan-vot"
+		},
+		{
+			"display": "Đua xe",
+			"slug": "/dua-xe"
+		}
+	],
+	"socials": [
+		{
+			"icon": "bi bi-facebook",
+			"link": "https://fb.me/sythai263"
+		},
+		{
+			"icon": "bi bi-instagram",
+			"link": "https://instagram.com/sythai263"
+		},
+		{
+			"icon": "bi bi-linkedin",
+			"link": "https://www.linkedin.com/in/sythai263/"
+		}
+	]
+}

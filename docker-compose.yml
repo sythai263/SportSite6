@@ -1,0 +1,33 @@
+﻿version: "3.1"
+services:
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: Root123
+      MARIADB_DATABASE: db_sport
+
+    ports:
+      - "3308:3306"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: Root123
+    ports:
+      - "8080:80"
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "5000:80"
+    restart: always
+    command: dotnet watch run
+    environment:
+      - DBHOST=db
+      - ASPNETCORE_ENVIRONMENT=Development

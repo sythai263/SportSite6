@@ -1,0 +1,39 @@
+[
+	{
+		"display": "Trang chủ",
+		"slug": "/",
+		"id": "home"
+	},
+	{
+		"display": "Bóng đá",
+		"slug": "#",
+		"id": "football",
+		"subMenu": [
+			{
+				"display": "World Cup 2022",
+				"slug": "/world-cup",
+				"id": "worldcup"
+			},
+			{
+				"display": "Cúp C1",
+				"slug": "/cup-c1",
+				"id": "c1"
+			},
+			{
+				"display": "Ngoại Hạng Anh",
+				"slug": "/ngoai-hang-anh",
+				"id": "premiere"
+			}
+		]
+	},
+	{
+		"display": "Quần vợt",
+		"slug": "/quan-vot",
+		"id": "tennis"
+	},
+	{
+		"display": "Đua xe",
+		"slug": "/dua-xe",
+		"id": "racing"
+	}
+]
