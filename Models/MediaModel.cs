@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace SportSite.Models;
+namespace SportSite6.Models;
 [Table("media")]
 public class Media
 {
@@ -27,5 +27,6 @@ public class Media
 
 	[Column("created_by", TypeName = "int")]
 	public int createdBy { get; set; }
+
 
 }

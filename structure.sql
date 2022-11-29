@@ -31,13 +31,12 @@ CREATE TABLE media(
 CREATE TABLE category(
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	title varchar(2000) NOT NULL,
+	slug varchar(255) NOT NULL,
 	description text NULL,
-	approve tinyint NOT NULL,
 	media_id int NULL,
 	display tinyint NOT NULL DEFAULT 1,
-	UNIQUE INDEX UQ_PAGE (slug),
-	CONSTRAINT FK_PAGE_MEDIA FOREIGN KEY (media_id) REFERENCES media(id),
-	CONSTRAINT FK_PAGE_CATEGORY FOREIGN KEY (category_id) REFERENCES category(id)
+	UNIQUE INDEX UQ_CATEGORY (slug),
+	CONSTRAINT FK_CATEGORY_MEDIA FOREIGN KEY (media_id) REFERENCES media(id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE page(
@@ -49,9 +48,9 @@ CREATE TABLE page(
 	approve tinyint NOT NULL DEFAULT 1,
 	media_id int NULL,
 	category_id int NOT NULL,
-	created_at date NOT NULL DEFAULT NOW(),
+	created_at datetime NOT NULL DEFAULT NOW(),
 	created_by int NOT NULL DEFAULT 0,
-	updated_at date NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+	updated_at datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
 	UNIQUE INDEX UQ_PAGE (slug),
 	CONSTRAINT FK_PAGE_MEDIA FOREIGN KEY (media_id) REFERENCES media(id),
 	CONSTRAINT FK_PAGE_CATEGORY FOREIGN KEY (category_id) REFERENCES category(id)
@@ -62,19 +61,23 @@ CREATE TABLE content(
 	heading varchar(5000) NOT NULL,
 	information text NULL,
 	media_id int NULL,
+	page_id int NOT NULL,
 	display tinyint NOT NULL DEFAULT 1,
-	created_at date NOT NULL DEFAULT NOW(),
+	created_at datetime NOT NULL DEFAULT NOW(),
 	created_by int NOT NULL DEFAULT 0,
-	updated_at date NOT NULL DEFAULT NOW() ON UPDATE NOW(),
-	CONSTRAINT FK_PAGE_MEDIA FOREIGN KEY (media_id) REFERENCES media(id)
+	updated_at datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
+	CONSTRAINT FK_CONTENT_MEDIA FOREIGN KEY (media_id) REFERENCES media(id),
+	CONSTRAINT FK_CONTENT_PAGE FOREIGN KEY (page_id) REFERENCES page(id)
 ) ENGINE = InnoDB;
 
 CREATE TABLE evaluation(
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	page_id int NOT NULL,
+	user_id int NOT NULL,
 	content text NOT NULL,
 	rate smallint NOT NULL DEFAULT 5,
-	created_at date NOT NULL DEFAULT NOW(),
+	created_at datetime NOT NULL DEFAULT NOW(),
 	created_by int NOT NULL DEFAULT 0,
-	CONSTRAINT FK_EVALUATION_PAGE FOREIGN KEY (page_id) REFERENCES page(id)
+	CONSTRAINT FK_EVALUATION_PAGE FOREIGN KEY (page_id) REFERENCES page(id),
+	CONSTRAINT FK_EVALUATION_USER FOREIGN KEY (user_id) REFERENCES user(id)
 ) ENGINE = InnoDB;

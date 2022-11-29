@@ -1,6 +1,11 @@
+global using SportSite6.Database;
+global using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
+builder.Services.AddDbContext<DBContext>(options =>
+{
+	var connectionString = builder.Configuration.GetConnectionString("WebAppDatabase");
+	options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+});
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

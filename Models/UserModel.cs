@@ -1,9 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SportSite.Models;
+namespace SportSite6.Models;
 
 [Table("user")]
+// [Index(nameof(User.email), Name = "UQ_EMAIL", IsUnique = true)]
+// [Index(nameof(User.username), Name = "UQ_USERNAME", IsUnique = true)]
 public class User
 {
 	[Key]
@@ -30,7 +32,7 @@ public class User
 
 	[Column("role", TypeName = "enum('Admin', 'User')")]
 	[EnumDataType(typeof(RoleEnum))]
-	public object? role { get; set; }
+	public string? role { get; set; }
 
 
 }

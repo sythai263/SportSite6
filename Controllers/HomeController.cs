@@ -11,6 +11,7 @@ public class HomeController : Controller
 	{
 		_logger = logger;
 	}
+	[Route("")]
 	[Route("trang-chu")]
 	public IActionResult Index()
 	{
