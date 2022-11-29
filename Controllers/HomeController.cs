@@ -1,21 +1,25 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace SportSite6.Controllers;
 
 public class HomeController : Controller
 {
 	private readonly ILogger<HomeController> _logger;
+	private readonly DBContext _context;
 
-	public HomeController(ILogger<HomeController> logger)
+	public HomeController(ILogger<HomeController> logger, DBContext context)
 	{
 		_logger = logger;
+		_context = context;
 	}
 	[Route("")]
 	[Route("trang-chu")]
-	public IActionResult Index()
+	public async Task<IActionResult> Index()
 	{
-		return View();
+		var user = await _context.Users.ToListAsync();
+		return Json(user);
 	}
 
 	[Route("chinh-sach")]
