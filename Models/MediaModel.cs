@@ -28,7 +28,4 @@ public class Media
 	[Column("created_by", TypeName = "int")]
 	public int createdBy { get; set; }
 
-	public List<Page>? pages { get; set; }
-
-
 }

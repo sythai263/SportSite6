@@ -18,20 +18,6 @@ namespace SportSite6.Database
 
 		}
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
-		{
-			// configures one-to-many relationship
-			modelBuilder.Entity<Page>()
-			.HasOne(p => p.media)
-			.WithMany(m => m.pages)
-			.HasForeignKey(pt => pt.mediaID);
-
-			modelBuilder.Entity<Media>()
-			.HasMany(p => p.pages);
-
-		}
-
-
 
 		public DbSet<User>? Users { get; set; }
 		public DbSet<Media>? Medias { get; set; }

@@ -19,26 +19,10 @@ public class HomeController : Controller
 
 	[Route("")]
 	[Route("trang-chu")]
-	public async Task<IActionResult> Index()
+	public IActionResult Index()
 	{
-		var user = await _context.Users.ToListAsync();
-		return Json(user);
+		return View();
 	}
-
-	[Route("home/cover")]
-	public async Task<IActionResult> GetCover()
-	{
-		Random ran = new Random();
-		var medias = await _context.Medias.ToListAsync();
-		var cover = new List<Media>();
-		for (int i = 0; i < 3; i++)
-		{
-			cover.Add(medias.ElementAt<Media>(ran.Next(0, medias.Count)));
-		}
-		return Json(cover);
-	}
-
-
 
 
 }
