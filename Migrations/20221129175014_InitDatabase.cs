@@ -224,6 +224,26 @@ namespace SportSite6.Migrations
                 name: "IX_page_media_id",
                 table: "page",
                 column: "media_id");
+
+						migrationBuilder.Sql(@"
+ALTER TABLE user ALTER gender SET DEFAULT 0;
+ALTER TABLE user ALTER role SET DEFAULT 'User';
+ALTER TABLE media ALTER media_type SET DEFAULT 0;
+ALTER TABLE media ALTER created_by SET DEFAULT 0;
+ALTER TABLE media ALTER created_at SET DEFAULT NOW();
+ALTER TABLE category ALTER display SET DEFAULT 1;
+ALTER TABLE page ALTER approve SET DEFAULT 0;
+ALTER TABLE page ALTER created_at SET DEFAULT NOW();
+ALTER TABLE page ALTER created_by SET DEFAULT 0;
+ALTER TABLE page ALTER updated_at SET DEFAULT NOW();
+ALTER TABLE content ALTER display SET DEFAULT 0;
+ALTER TABLE content ALTER created_at SET DEFAULT NOW();
+ALTER TABLE content ALTER created_by SET DEFAULT 0;
+ALTER TABLE content ALTER updated_at SET DEFAULT NOW();
+ALTER TABLE evaluation ALTER rate SET DEFAULT 5;
+ALTER TABLE evaluation ALTER created_at SET DEFAULT NOW();
+ALTER TABLE evaluation ALTER created_by SET DEFAULT 0;
+", true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

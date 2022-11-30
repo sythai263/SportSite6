@@ -23,8 +23,14 @@ public class Page
 	[Column("approve", TypeName = "tinyint")]
 	public byte approve { get; set; }
 
+	[Column("media_id", TypeName = "int")]
+	public int mediaID { get; set; }
+
 	[ForeignKey("media_id")]
 	public Media? media { get; set; }
+
+	[Column("media_id", TypeName = "int")]
+	public int categoryID { get; set; }
 
 	[ForeignKey("category_id")]
 	public Category? category { get; set; }

@@ -15,7 +15,23 @@ namespace SportSite6.Database
 			// connect to mysql with connection string from app settings
 			var connectionString = configuration.GetConnectionString("WebAppDatabase");
 			options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+
 		}
+
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			// configures one-to-many relationship
+			modelBuilder.Entity<Page>()
+			.HasOne(p => p.media)
+			.WithMany(m => m.pages)
+			.HasForeignKey(pt => pt.mediaID);
+
+			modelBuilder.Entity<Media>()
+			.HasMany(p => p.pages);
+
+		}
+
+
 
 		public DbSet<User>? Users { get; set; }
 		public DbSet<Media>? Medias { get; set; }

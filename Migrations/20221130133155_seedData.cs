@@ -1,86 +1,20 @@
-CREATE DATABASE IF NOT EXISTS db_sport;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-USE db_sport;
+#nullable disable
 
-CREATE TABLE user(
-	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	username varchar(50) NOT NULL,
-	password varchar(255) NOT NULL,
-	name varchar(255) NULL,
-	birthday date NULL,
-	gender smallint default 0,
-	phone varchar(15) NULL,
-	email varchar(255) NOT NULL,
-	role enum('Admin', 'User') NOT NULL DEFAULT 'User',
-	UNIQUE INDEX UQ_USERNAME (username),
-	UNIQUE INDEX UQ_EMAIL (email)
-) ENGINE = InnoDB;
+namespace SportSite6.Migrations
+{
+	public partial class seedData : Migration
+	{
+		protected override void Up(MigrationBuilder migrationBuilder)
+		{
+			migrationBuilder.Sql(@"
+ALTER TABLE user AUTO_INCREMENT=1;
+ALTER TABLE media AUTO_INCREMENT=1;
+ALTER TABLE page AUTO_INCREMENT=1;
+ALTER TABLE category AUTO_INCREMENT=1;
+ALTER TABLE content AUTO_INCREMENT=1;
 
-CREATE TABLE media(
-	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	title varchar(2000) NOT NULL,
-	original_name varchar(2000) NOT NULL,
-	source varchar(2000) NULL,
-	alt_text varchar(2000) NULL,
-	media_type smallint NOT NULL DEFAULT 1,
-	created_at datetime NOT NULL DEFAULT NOW(),
-	created_by int NOT NULL DEFAULT 0,
-	UNIQUE INDEX UQ_ORIGINAL (original_name)
-) ENGINE = InnoDB;
-
-CREATE TABLE category(
-	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	title varchar(2000) NOT NULL,
-	slug varchar(255) NOT NULL,
-	description text NULL,
-	media_id int NULL,
-	display tinyint NOT NULL DEFAULT 1,
-	UNIQUE INDEX UQ_CATEGORY (slug),
-	CONSTRAINT FK_CATEGORY_MEDIA FOREIGN KEY (media_id) REFERENCES media(id)
-) ENGINE = InnoDB;
-
-CREATE TABLE page(
-	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	slug varchar(255) NOT NULL,
-	title varchar(2000) NOT NULL,
-	heading varchar(5000) NOT NULL,
-	description varchar(5000) NULL,
-	approve tinyint NOT NULL DEFAULT 1,
-	media_id int NULL,
-	category_id int NOT NULL,
-	created_at datetime NOT NULL DEFAULT NOW(),
-	created_by int NOT NULL DEFAULT 0,
-	updated_at datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
-	UNIQUE INDEX UQ_PAGE (slug),
-	CONSTRAINT FK_PAGE_MEDIA FOREIGN KEY (media_id) REFERENCES media(id),
-	CONSTRAINT FK_PAGE_CATEGORY FOREIGN KEY (category_id) REFERENCES category(id)
-) ENGINE = InnoDB;
-
-CREATE TABLE content(
-	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	heading varchar(5000) NOT NULL,
-	information text NULL,
-	media_id int NULL,
-	page_id int NOT NULL,
-	display tinyint NOT NULL DEFAULT 1,
-	created_at datetime NOT NULL DEFAULT NOW(),
-	created_by int NOT NULL DEFAULT 0,
-	updated_at datetime NOT NULL DEFAULT NOW() ON UPDATE NOW(),
-	CONSTRAINT FK_CONTENT_MEDIA FOREIGN KEY (media_id) REFERENCES media(id),
-	CONSTRAINT FK_CONTENT_PAGE FOREIGN KEY (page_id) REFERENCES page(id)
-) ENGINE = InnoDB;
-
-CREATE TABLE evaluation(
-	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	page_id int NOT NULL,
-	user_id int NOT NULL,
-	content text NOT NULL,
-	rate smallint NOT NULL DEFAULT 5,
-	created_at datetime NOT NULL DEFAULT NOW(),
-	created_by int NOT NULL DEFAULT 0,
-	CONSTRAINT FK_EVALUATION_PAGE FOREIGN KEY (page_id) REFERENCES page(id),
-	CONSTRAINT FK_EVALUATION_USER FOREIGN KEY (user_id) REFERENCES user(id)
-) ENGINE = InnoDB;
 
 INSERT INTO user(username, password, name, birthday, gender, email, role)
 VALUES 
@@ -121,7 +55,7 @@ VALUES
 INSERT INTO category(title, slug, description, media_id)
 VALUES
 ('World Cup 2022', 'world-cup', 'Giải vô địch bóng đá thế giới hoặc Cúp bóng đá thế giới', 1),
-('Bóng đá Việt Nam', 'v-league', 'Giải vô địch bóng đá thế giới hoặc Cúp bóng đá thế giới', ),
+('Bóng đá Việt Nam', 'v-league', 'Giải vô địch bóng đá thế giới hoặc Cúp bóng đá thế giới', 2),
 ('AFF CUP 2022', 'aff-cup-2022', 'giải đấu bóng đá giữa các đội tuyển bóng đá nam quốc gia đại diện các quốc gia thuộc khu vực Đông Nam Á do Liên đoàn bóng đá Đông Nam Á (AFF) tổ chức', 3),
 ('Cúp C1 Châu Âu', 'cup-c1', 'Giải cúp c1 ', 4),
 ('Ngoại Hạng Anh', 'premiere-league', 'Ngoại Hạng Anh', 5),
@@ -132,7 +66,7 @@ INSERT INTO page(title, slug, description, heading, media_id, category_id)
 VALUES 
 ('Kết quả Việt Nam vs Dortmund: Thắng lợi khó tin', 'ket-qua-viet-nam-vs-dortmund-19h00-hom-nay-30-11', 'ĐT Việt Nam hạ đẹp Dortmund ngay tại Mỹ Đình', 'ĐT Việt Nam hạ đẹp Dortmund ngay tại Mỹ Đình', 9, 2),
 ('Đội hình mạnh nhất Pháp vs Tunisia: Đẳng cấp chênh lệch','doi-hinh-manh-nhat-phap-vs-tunisia-dang-cap-chenh-lech','Đội hình mạnh nhất Pháp vs Tunisia: Đẳng cấp chênh lệch', 'Đội hình mạnh nhất Pháp vs Tunisia: Đẳng cấp chênh lệch', 10, 1),
-('Tổng thống Mỹ "vui sướng tột độ" về thành tích đội nhà tại World Cup 2022', '', 'Tổng thống Mỹ "vui sướng tột độ" về thành tích đội nhà tại World Cup 2022', 'Tổng thống Mỹ "vui sướng tột độ" về thành tích đội nhà tại World Cup 2022', 11, 1)
+('Tổng thống Mỹ vui sướng tột độ về thành tích đội nhà tại World Cup 2022', '', 'Tổng thống Mỹ vui sướng tột độ về thành tích đội nhà tại World Cup 2022', 'Tổng thống Mỹ vui sướng tột độ về thành tích đội nhà tại World Cup 2022', 11, 1);
 
 INSERT INTO content(heading, information, media_id, page_id)
 VALUES
@@ -153,8 +87,34 @@ VALUES
 (NULL, 'Tunisia: Dahmen; Bronn, Talbi, Meriah; Kechrida, Skhiri, Laidouni, Abdi; Msakni, Sliti; Khazri', NULL, 2),
 (NULL, 'Thành công của ĐT Mỹ tính tới thời điểm này tại World Cup 2022 khiến tổng thống Joe Biden cảm thấy rất tự hào.', NULL, 3),
 (NULL, 'Vốn được đánh giá không cao trước thềm World Cup 2022 diễn ra, giờ đây ĐT Mỹ đã trình diễn một bộ mặt vượt xa sự kỳ vọng của NHM khi chính thức ghi tên vào vòng 16 đội mạnh nhất. Đương nhiên, thành công của đội nhà tại Qatar lần này là niềm tự hào của người dân Xứ cờ hoa.', NULL, 3),
-(NULL, 'Ngay khi trận đấu với Iran kết thúc, Tổng thống Mỹ Joe Biden đã không giấu nổi niềm vui sướng. Phát biểu ngay tại sự kiện trực tiếp, ông đã tự hào hô vang: "USA, USA, đây là một chiến thắng trên cả tuyệt vời".', NULL, 3),
-(NULL, '"Tôi đã có niềm tin là các cầu thủ sẽ làm nên chuyện ngay từ khi nói chuyện với họ. Chúa phù hộ đội tuyển. Hy vọng tất cả mọi người có thể cùng ăn mừng chiến thắng này".', 8, 3),
+(NULL, 'Ngay khi trận đấu với Iran kết thúc, Tổng thống Mỹ Joe Biden đã không giấu nổi niềm vui sướng. Phát biểu ngay tại sự kiện trực tiếp, ông đã tự hào hô vang: USA, USA, đây là một chiến thắng trên cả tuyệt vời.', NULL, 3),
+(NULL, 'Tôi đã có niềm tin là các cầu thủ sẽ làm nên chuyện ngay từ khi nói chuyện với họ. Chúa phù hộ đội tuyển. Hy vọng tất cả mọi người có thể cùng ăn mừng chiến thắng này.', 8, 3),
 (NULL, 'Đừng quên là ngoài việc vượt qua vòng bảng, ĐT Mỹ đã làm được điều này với tư cách là đội chỉ để lọt lưới 1 bàn duy nhất xuất phát từ quả 11m ở trận đấu với Xứ Wales. Trên thực tế thì góp mặt tại vòng knock-out là thành tích thường có của họ tại các kỳ World Cup, tuy nhiên tại Qatar năm nay thì đó được xem như một niềm tự hào.', NULL, 3),
-(NULL, 'Đáng tiếc, vị trí thứ 2 bảng B khiến họ sẽ phải đụng độ đối thủ rất mạnh là Hà Lan ở vòng đấu tiếp theo. Mặc dù vậy, Christian Pulisic và các đồng đội đã từng có màn thể hiện rất tốt trước ứng cử viên vô địch là ĐT Anh, do đó họ hoàn toàn có thể làm nên "điều kỳ diệu" trong một ngày phong độ lên cao.', NULL, 3),
-(NULL, 'Trận đấu giữa ĐT Mỹ và ĐT Hà Lan ở vòng knock-out World Cup 2022 sẽ diễn ra vào ngày 3/12 tới.', NULL, 3),
+(NULL, 'Đáng tiếc, vị trí thứ 2 bảng B khiến họ sẽ phải đụng độ đối thủ rất mạnh là Hà Lan ở vòng đấu tiếp theo. Mặc dù vậy, Christian Pulisic và các đồng đội đã từng có màn thể hiện rất tốt trước ứng cử viên vô địch là ĐT Anh, do đó họ hoàn toàn có thể làm nên điều kỳ diệu trong một ngày phong độ lên cao.', NULL, 3),
+(NULL, 'Trận đấu giữa ĐT Mỹ và ĐT Hà Lan ở vòng knock-out World Cup 2022 sẽ diễn ra vào ngày 3/12 tới.', NULL, 3);
+
+");
+		}
+
+		protected override void Down(MigrationBuilder migrationBuilder)
+		{
+			migrationBuilder.Sql(@"
+DELETE FROM content;
+ALTER TABLE content AUTO_INCREMENT=1;
+
+DELETE FROM page;
+ALTER TABLE page AUTO_INCREMENT=1;
+
+DELETE FROM category;
+ALTER TABLE category AUTO_INCREMENT=1;
+
+DELETE FROM media;
+ALTER TABLE media AUTO_INCREMENT=1;
+
+DELETE FROM user;
+ALTER TABLE user AUTO_INCREMENT=1;
+		");
+
+		}
+	}
+}
