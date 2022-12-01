@@ -1,13 +1,16 @@
-﻿@model SportSite6.Models.Page
+﻿@model Page;
 @{
-	ViewData["Title"] = "Home Page";
-	var pages = ViewData["pages"] as Page;
+	var pages = ViewData["pages"] as Page[];
 } <div class="hero-area">
 	<!-- Hero Slides Area -->
 	<div class="hero-slides owl-carousel">
-		<div class="single-hero-slide bg-img background-overlay" style="background-image: url(@ViewData["cover0"]);"></div>
-		<div class="single-hero-slide bg-img background-overlay" style="background-image: url(@ViewData["cover1"]);"></div>
-		<div class="single-hero-slide bg-img background-overlay" style="background-image: url(@ViewData["cover2"]);"></div>
+
+	@foreach (var page in pages)
+	{
+		<div class="single-hero-slide bg-img background-overlay" style="background-image: url(@(page.media.source));"></div>
+	}
+
+		
 	</div>
 	<!-- Hero Post Slide -->
 	<div class="hero-post-area">
@@ -15,16 +18,16 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="hero-post-slide">
-						<!-- Single Slide -->
+					@foreach (var page in pages){
 						<div class="single-slide d-flex align-items-center">
 							<div class="post-number">
-								<p>1</p>
+								<p>@(page.id)</p>
 							</div>
 							<div class="post-title">
-								<a href="single-blog.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex</a>
+								<a href="@(page.slug)">@(page.title)</a>
 							</div>
 						</div>
-						
+						}
 					</div>
 				</div>
 			</div>

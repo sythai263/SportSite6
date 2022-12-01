@@ -31,6 +31,7 @@ public class HomeController : Controller
 			p.category = category;
 		}
 		ViewData["pages"] = pages;
+		ViewData["Title"] = "Trang chủ";
 		return View();
 	}
 
