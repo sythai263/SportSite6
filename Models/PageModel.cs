@@ -26,13 +26,13 @@ public class Page
 	[Column("media_id", TypeName = "int")]
 	public int mediaID { get; set; }
 
-	[ForeignKey("media_id")]
+	// [ForeignKey("media_id")]
 	public Media? media { get; set; }
 
-	[Column("media_id", TypeName = "int")]
+	[Column("category_id", TypeName = "int")]
 	public int categoryID { get; set; }
 
-	[ForeignKey("category_id")]
+	// [ForeignKey("category_id")]
 	public Category? category { get; set; }
 
 	[Column("created_at", TypeName = "datetime")]
