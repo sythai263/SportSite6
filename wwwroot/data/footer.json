@@ -1,7 +1,7 @@
 {
 	"branch": "Sport Site",
 	"copyright": "Copyright SportSite ©",
-	"logo": "img/core-img/logo.png",
+	"logo": "/upload/images/logo/logo.png",
 	"navigates": [
 		{
 			"display": "Trang chủ",
