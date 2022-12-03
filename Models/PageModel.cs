@@ -24,15 +24,18 @@ public class Page
 	public byte approve { get; set; }
 
 	[Column("media_id", TypeName = "int")]
+	[ForeignKey("media_id")]
 	public int mediaID { get; set; }
 
-	// [ForeignKey("media_id")]
 	public Media? media { get; set; }
 
 	[Column("category_id", TypeName = "int")]
+	[ForeignKey("category_id")]
 	public int categoryID { get; set; }
 
-	// [ForeignKey("category_id")]
+	[Column("views", TypeName = "int")]
+	public int views { get; set; }
+
 	public Category? category { get; set; }
 
 	[Column("created_at", TypeName = "datetime")]

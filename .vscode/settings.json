@@ -1,6 +1,6 @@
 {
   "editor.tabSize": 2,
-  "prettier.singleQuote": true,
+  "prettier.singleQuote": false,
   // Set the default
   "editor.formatOnSave": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -8,5 +8,9 @@
   "[csharp]": {
     "editor.defaultFormatter": "ms-dotnettools.csharp",
     "editor.formatOnSave": true
-  }
+	},
+	"csharp.inlayHints.parameters.forLiteralParameters": true,
+	"csharp.inlayHints.parameters.enabled": true,
+	"csharp.inlayHints.parameters.forObjectCreationParameters": true,
+	"csharp.inlayHints.types.enabled": true
 }

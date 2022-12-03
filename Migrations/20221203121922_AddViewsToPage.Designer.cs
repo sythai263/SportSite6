@@ -11,8 +11,8 @@ using SportSite6.Database;
 namespace SportSite6.Migrations
 {
 	[DbContext(typeof(DBContext))]
-	[Migration("20221129175014_InitDatabase")]
-	partial class InitDatabase
+	[Migration("20221203121922_AddViewsToPage")]
+	partial class AddViewsToPage
 	{
 		protected override void BuildTargetModel(ModelBuilder modelBuilder)
 		{
@@ -189,8 +189,9 @@ namespace SportSite6.Migrations
 											.HasColumnType("tinyint")
 											.HasColumnName("approve");
 
-						b.Property<int?>("category_id")
-											.HasColumnType("int");
+						b.Property<int>("categoryID")
+											.HasColumnType("int")
+											.HasColumnName("category_id");
 
 						b.Property<DateTime>("createdAt")
 											.HasColumnType("datetime")
@@ -208,8 +209,9 @@ namespace SportSite6.Migrations
 											.HasColumnType("varchar(5000)")
 											.HasColumnName("heading");
 
-						b.Property<int?>("media_id")
-											.HasColumnType("int");
+						b.Property<int>("mediaID")
+											.HasColumnType("int")
+											.HasColumnName("media_id");
 
 						b.Property<string>("slug")
 											.HasColumnType("varchar(255)")
@@ -223,11 +225,15 @@ namespace SportSite6.Migrations
 											.HasColumnType("datetime")
 											.HasColumnName("updated_at");
 
+						b.Property<int>("views")
+											.HasColumnType("int")
+											.HasColumnName("views");
+
 						b.HasKey("id");
 
-						b.HasIndex("category_id");
+						b.HasIndex("categoryID");
 
-						b.HasIndex("media_id");
+						b.HasIndex("mediaID");
 
 						b.ToTable("page");
 					});
@@ -319,11 +325,15 @@ namespace SportSite6.Migrations
 					{
 						b.HasOne("SportSite6.Models.Category", "category")
 											.WithMany()
-											.HasForeignKey("category_id");
+											.HasForeignKey("categoryID")
+											.OnDelete(DeleteBehavior.Cascade)
+											.IsRequired();
 
 						b.HasOne("SportSite6.Models.Media", "media")
 											.WithMany()
-											.HasForeignKey("media_id");
+											.HasForeignKey("mediaID")
+											.OnDelete(DeleteBehavior.Cascade)
+											.IsRequired();
 
 						b.Navigation("category");
 

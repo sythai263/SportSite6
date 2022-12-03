@@ -50,10 +50,10 @@ VALUES
 
 INSERT INTO page(title, slug, description, heading, media_id, category_id)
 VALUES 
-('Kết quả Việt Nam vs Dortmund: Thắng lợi khó tin', 'ket-qua-viet-nam-vs-dortmund-19h00-hom-nay-30-11', 'ĐT Việt Nam hạ đẹp Dortmund ngay tại Mỹ Đình', 'ĐT Việt Nam hạ đẹp Dortmund ngay tại Mỹ Đình', 1, 2),
-('Đội hình mạnh nhất Pháp vs Tunisia: Đẳng cấp chênh lệch','doi-hinh-manh-nhat-phap-vs-tunisia-dang-cap-chenh-lech','Đội hình mạnh nhất Pháp vs Tunisia: Đẳng cấp chênh lệch', 'Đội hình mạnh nhất Pháp vs Tunisia	: Đẳng cấp chênh lệch', 3, 1),
-('Tổng thống Mỹ vui sướng tột độ về thành tích đội nhà tại World Cup 2022', 'tong-thong-my-vui-suong-tot-do-voi-thanh-tich-doi-nha-tai-world-cup', 'Tổng thống Mỹ vui sướng tột độ về thành tích đội nhà tại World Cup 2022', 'Tổng thống Mỹ vui sướng tột độ về thành tích đội nhà tại World Cup 2022', 4, 1),
-('HLV Scaloni: Tôi không biết Úc yếu hơn Argentina','hlv-scaloni-toi-khong-biet-uc-yeu-hon-argentina', 'HLV Lionel Scaloni cho rằng nên loại bỏ mọi sự thiên vị dành cho ĐT Argentina bởi đối thủ của họ tại vòng 1/8 World Cup 2022 là Úc không hề yếu.', 'HLV Scaloni: ""Tôi không biết Úc yếu hơn Argentina""', 9, 1);
+('Kết quả Việt Nam vs Dortmund: Thắng lợi khó tin', '/tin-tuc/ket-qua-viet-nam-vs-dortmund-19h00-hom-nay-30-11', 'ĐT Việt Nam hạ đẹp Dortmund ngay tại Mỹ Đình', 'ĐT Việt Nam hạ đẹp Dortmund ngay tại Mỹ Đình', 1, 2),
+('Đội hình mạnh nhất Pháp vs Tunisia: Đẳng cấp chênh lệch','/tin-tuc/doi-hinh-manh-nhat-phap-vs-tunisia-dang-cap-chenh-lech','Đội hình mạnh nhất Pháp vs Tunisia: Đẳng cấp chênh lệch', 'Đội hình mạnh nhất Pháp vs Tunisia	: Đẳng cấp chênh lệch', 3, 1),
+('Tổng thống Mỹ vui sướng tột độ về thành tích đội nhà tại World Cup 2022', '/tin-tuc/tong-thong-my-vui-suong-tot-do-voi-thanh-tich-doi-nha-tai-world-cup', 'Tổng thống Mỹ vui sướng tột độ về thành tích đội nhà tại World Cup 2022', 'Tổng thống Mỹ vui sướng tột độ về thành tích đội nhà tại World Cup 2022', 4, 1),
+('HLV Scaloni: Tôi không biết Úc yếu hơn Argentina','/tin-tuc/hlv-scaloni-toi-khong-biet-uc-yeu-hon-argentina', 'HLV Lionel Scaloni cho rằng nên loại bỏ mọi sự thiên vị dành cho ĐT Argentina bởi đối thủ của họ tại vòng 1/8 World Cup 2022 là Úc không hề yếu.', 'HLV Scaloni: ""Tôi không biết Úc yếu hơn Argentina""', 9, 1);
 
 INSERT INTO content(heading, information, media_id, page_id)
 VALUES

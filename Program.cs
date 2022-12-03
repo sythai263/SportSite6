@@ -1,5 +1,6 @@
 global using SportSite6.Database;
 global using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DBContext>(options =>
 {
