@@ -20,6 +20,7 @@
 			</div>
 		</div>
 		<!-- Preloader End -->
+		
 		<!-- ***** Header Area Start ***** -->
 		<header class="header-area">
 			<div class="container">
@@ -50,6 +51,9 @@
 				</div>
 			</div>
 		</header>
+		<div class="row justify-content-center fixed-top mt-5">
+			<div class="alert alert-warning text-center inline-block hide" role="alert" id="alert"></div>
+		</div>
 		<main role="main"> @RenderBody() </main>
 		<!-- ***** Footer Area Start ***** -->
 		<footer class="footer-area">
@@ -58,13 +62,15 @@
 				</div>
 			</div>
 		</footer>
+		
 		<!-- ***** Footer Area End ***** -->
-		<script src="js/jquery-2.2.4.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/popper.min.js"></script>
-		<script src="js/plugins.js"></script>
-		<script src="js/active.js"></script>
-		<script src="js/site.js"></script>
+		<script src="/js/jquery-2.2.4.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
+		<script src="/js/popper.min.js"></script>
+		<script src="/js/plugins.js"></script>
+		<script src="/js/active.js"></script>
+		<script src="/js/site.js"></script>
+		<script src="@ViewData["script"]"></script>
 		
  @await RenderSectionAsync("Scripts", required: false)
 	</body>

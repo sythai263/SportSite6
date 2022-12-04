@@ -9,8 +9,14 @@
     "editor.defaultFormatter": "ms-dotnettools.csharp",
     "editor.formatOnSave": true
 	},
-	"csharp.inlayHints.parameters.forLiteralParameters": true,
-	"csharp.inlayHints.parameters.enabled": true,
+	"csharp.inlayHints.parameters.forLiteralParameters": false,
+	"csharp.inlayHints.parameters.enabled": false,
 	"csharp.inlayHints.parameters.forObjectCreationParameters": true,
-	"csharp.inlayHints.types.enabled": true
+	"csharp.inlayHints.types.enabled": true,
+	"csharp.semanticHighlighting.enabled": true,
+	"csharp.suppressHiddenDiagnostics": false,
+	"csharp.testsCodeLens.enabled": false,
+	"csharp.inlayHints.types.forLambdaParameterTypes": true,
+	"csharp.inlayHints.types.forImplicitVariableTypes": true,
+	"csharp.inlayHints.parameters.forOtherParameters": true
 }

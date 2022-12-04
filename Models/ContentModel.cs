@@ -18,9 +18,15 @@ public class Content
 	public byte display { get; set; }
 
 	[ForeignKey("media_id")]
+	[Column("media_id", TypeName = "int")]
+	public int? mediaID { get; set; }
+
 	public Media? media { get; set; }
 
 	[ForeignKey("page_id")]
+	[Column("page_id", TypeName = "int")]
+	public int? pageID { get; set; }
+
 	public Page? page { get; set; }
 
 	[Column("created_at", TypeName = "datetime")]

@@ -1,0 +1,108 @@
+﻿@model Page;
+@{
+	var page = ViewData["page"] as Page;
+} 
+<div class="hero-area height-600 bg-img background-overlay" style="background-image: url(@(page.media.source));">
+	<div class="container h-100">
+		<div class="row h-100 align-items-center justify-content-center">
+			<div class="col-12 col-md-8 col-lg-6">
+				<div class="single-blog-title text-center">
+					<!-- Catagory -->
+					<div class="post-cta"><a href="#">@(page.category.title)</a></div>
+					<h3>@(page.title)</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="main-content-wrapper section-padding-100">
+	<div class="container">
+		<div class="row justify-content-center">
+			<!-- ============= Post Content Area ============= -->
+			<div class="col-12 col-lg-8">
+				<div class="single-blog-content mb-100">
+					<!-- Post Meta -->
+					<div class="post-meta">
+						<p class="post-date">@(page.createdAt.ToString("dddd, dd MMMM yyyy"))</a>
+						</p>
+					</div>
+					<!-- Post Content -->
+					<div class="post-content">
+					<div id="content-post">
+					
+					</div>
+						
+						<div class="post-meta second-part">
+							<p class="post-date">@(page.createdAt.ToString("dddd, dd MMMM yyyy"))</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ========== Sidebar Area ========== -->
+			<div class="col-12 col-md-8 col-lg-4">
+				<div class="post-sidebar-area mb-100">
+					<!-- Widget Area -->
+					<div class="sidebar-widget-area">
+						<h5 class="title">Tin HOT</h5>
+						<div class="widget-content" id="hot-news">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ============== Related Post ============== -->
+		<div class="row" id="related-post">
+			
+		</div>
+		<div class="row">
+			<div class="col-12 col-lg-8">
+				<div class="post-a-comment-area mt-70">
+					<h5>Bình luận</h5>
+					<!-- Contact Form -->
+					<form method="post" id="form-comment">
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<div class="group">
+									<input type="text" name="name" id="name" required>
+									<span class="highlight"></span>
+									<span class="bar"></span>
+									<label>Tên của bạn</label>
+								</div>
+							</div>
+							<div class="col-12 col-md-6">
+								<div class="group">
+									<input type="email" name="email" id="email" required>
+									<span class="highlight"></span>
+									<span class="bar"></span>
+									<label>Email</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="group">
+									<textarea name="content" id="message" required></textarea>
+									<span class="highlight"></span>
+									<span class="bar"></span>
+									<label>Nội dung</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<button type="submit" class="btn world-btn">Đăng</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-12 col-lg-8">
+				<!-- Comment Area Start -->
+				<div class="comment_area clearfix mt-70">
+					<ol id="comment-post">
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<p id="id-single-post" class="d-none">@(page.id)</p>

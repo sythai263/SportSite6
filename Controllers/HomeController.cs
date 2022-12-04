@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using SportSite6.Models;
 
 namespace SportSite6.Controllers;
@@ -24,15 +23,6 @@ public class HomeController : Controller
 		int count = 4;
 		var pages = await _context.Pages.OrderByDescending(p => p.id).Take(3).ToArrayAsync();
 		foreach (Page p in pages)
-		{
-			var media = await _context.Medias.Where(m => m.id == p.mediaID).SingleAsync();
-			var category = await _context.Categories.Where(c => c.id == p.categoryID).SingleAsync();
-			p.media = media;
-			p.category = category;
-		}
-
-		var pagesHot = await _context.Pages.OrderByDescending(p => p.views).Take(5).ToArrayAsync();
-		foreach (Page p in pagesHot)
 		{
 			var media = await _context.Medias.Where(m => m.id == p.mediaID).SingleAsync();
 			var category = await _context.Categories.Where(c => c.id == p.categoryID).SingleAsync();
@@ -78,12 +68,31 @@ public class HomeController : Controller
 
 		ViewData["pagesHeader"] = pages;
 		ViewData["pagesWC"] = pagesWC;
-		ViewData["pagesHot"] = pagesHot;
 		ViewData["pagesESport"] = pagesESport;
 		ViewData["pagesRace"] = pagesRace;
+		ViewData["script"] = "/js/home.js";
 		ViewData["Title"] = "Trang chủ";
 		return View();
 	}
 
+	[Route("tin-tuc/{slug}")]
+	public async Task<IActionResult> SinglePost(string slug)
+	{
+		var page = await _context.Pages.Where(p => p.slug.Contains(slug)).SingleAsync();
+		var media = await _context.Medias.Where(m => m.id == page.mediaID).SingleAsync();
+		var category = await _context.Categories.Where(c => c.id == page.categoryID).SingleAsync();
+		page.media = media;
+		page.category = category;
+		// return Json(page);
+		ViewData["page"] = page;
+		ViewData["script"] = "/js/single-post.js";
+		ViewData["Title"] = page.title;
+		return View();
+	}
 
+	[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+	public IActionResult Error()
+	{
+		return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+	}
 }

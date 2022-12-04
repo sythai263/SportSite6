@@ -28,7 +28,7 @@ public class User
 
 	[DataType(DataType.Date)]
 	[Column("birthday", TypeName = "date")]
-	public DateTime birthday { get; set; }
+	public DateTime? birthday { get; set; }
 
 	[Column("role", TypeName = "enum('Admin', 'User')")]
 	[EnumDataType(typeof(RoleEnum))]

@@ -65,5 +65,6 @@
         `<li class="mx-2"><a href="${social?.link}"><i class="${social?.icon} social"></i></a></li>`
       );
     });
-  });
+	});
+	$("#alert").hide();
 });

@@ -14,10 +14,16 @@ public class Evaluation
 	[Column("rate", TypeName = "smallint")]
 	public short rate { get; set; }
 
-	[ForeignKey("media_id")]
-	public Media? media { get; set; }
+	[ForeignKey("page_id")]
+	[Column("page_id", TypeName = "int")]
+	public int? pageID { get; set; }
+
+	public Page? page { get; set; }
 
 	[ForeignKey("user_id")]
+	[Column("user_id", TypeName = "int")]
+	public int? userID { get; set; }
+
 	public User? user { get; set; }
 
 	[Column("created_at", TypeName = "datetime")]

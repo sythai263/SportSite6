@@ -27,14 +27,14 @@ VALUES
 ('Pháp có lực lượng vượt trội so với Tunisia', 'Image1.png', '/upload/images/page2-1.jpg', 'Pháp có lực lượng vượt trội so với Tunisia', 1),
 ('Tổng thống Mỹ không giấu được niềm vui trước thành tích của Pulisic và các đồng đội (Ảnh: internet)', 'image3.png', '/upload/images/page3-1.png', 'Tổng thống Mỹ không giấu được niềm vui trước thành tích của Pulisic và các đồng đội (Ảnh: internet)', 1),
 ('Tổng thống Mỹ không giấu được niềm vui trước thành tích của Pulisic và các đồng đội (Ảnh: internet)', 'image4.png', '/upload/images/page3-2.jpg', 'Tổng thống Mỹ không giấu được niềm vui trước thành tích của Pulisic và các đồng đội (Ảnh: internet)', 1),
-('Kết quả Việt Nam vs Dortmund: Thắng lợi khó tin', 'youtube', 'https://www.youtube.com/watch?v=lCXYLExheoM', 'Kết quả Việt Nam vs Dortmund: Thắng lợi khó tin', 0),
+('Kết quả Việt Nam vs Dortmund: Thắng lợi khó tin', 'youtube', 'https://www.youtube.com/embed/lCXYLExheoM', 'Kết quả Việt Nam vs Dortmund: Thắng lợi khó tin', 0),
 ('Đội hình mạnh nhất Pháp vs Tunisia: Đẳng cấp chênh lệch', 'audio1.mp3', '/upload/audios/doi-hinh-Phap-Tunisia.mp3', 'Đội hình mạnh nhất Pháp vs Tunisia: Đẳng cấp chênh lệch', 2),
 ('Tổng thống Mỹ không giấu được niềm vui trước thành tích của Pulisic và các đồng đội', 'audio2.mp3', '/upload/audios/tong-thong-my-vui.mp3', 'Tổng thống Mỹ không giấu được niềm vui trước thành tích của Pulisic và các đồng đội', 1), 
 ('Tôi không biết Úc yếu hơn Argentina','page4-1.webp', '/upload/images/page4-1.webp', 'Tôi không biết Úc yếu hơn Argentina', 1),
 ('Sau Ả Rập Xê Út, Messi và các đồng đội sẽ đụng độ một đối thủ châu Á khác tại vòng 16 đội là Úc','page4-2.jpg', '/upload/images/page4-2.jpg', 'Sau Ả Rập Xê Út, Messi và các đồng đội sẽ đụng độ một đối thủ châu Á khác tại vòng 16 đội là Úc', 1),
 ('Tôi không biết Úc yếu hơn Argentina','audio4.mp3', '/upload/audios/toi-khong-biet-uc-yeu-hon-aghentina.mp3', 'Tôi không biết Úc yếu hơn Argentina', 2),
-('HLV Scaloni của ĐT Argentina cho rằng Úc là một đối thủ mạnh và không bất ngờ khi họ giành quyền đi tiếp ở bảng D','page4-3.mp3', '/upload/page4-3.jpg', 'HLV Scaloni của ĐT Argentina cho rằng Úc là một đối thủ mạnh và không bất ngờ khi họ giành quyền đi tiếp ở bảng D', 1),
-('Không khó để bắt gặp những tấm banner in hình Messi hay Maradona trên khán đài World Cup 2022','page4-3.jpg', '/upload/page4-4.jpg', 'Không khó để bắt gặp những tấm banner in hình Messi hay Maradona trên khán đài World Cup 2022', 1);
+('HLV Scaloni của ĐT Argentina cho rằng Úc là một đối thủ mạnh và không bất ngờ khi họ giành quyền đi tiếp ở bảng D','page4-3.mp3', '/upload/images/page4-3.jpg', 'HLV Scaloni của ĐT Argentina cho rằng Úc là một đối thủ mạnh và không bất ngờ khi họ giành quyền đi tiếp ở bảng D', 1),
+('Không khó để bắt gặp những tấm banner in hình Messi hay Maradona trên khán đài World Cup 2022','page4-3.jpg', '/upload/images/page4-4.jpg', 'Không khó để bắt gặp những tấm banner in hình Messi hay Maradona trên khán đài World Cup 2022', 1);
 
 
 
