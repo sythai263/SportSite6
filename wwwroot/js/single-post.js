@@ -46,6 +46,23 @@ $.get(`/api/pages/${id}/contents`, (data) => {
 
 $.get(`/api/pages/${id}/related`, (data) => {
 	const related = $(`#related-post`);
+	if (data.length == 0) {
+		related.append(`
+<div class ="col-12 col-lg-8" >
+	<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig" >
+		<!-- Post Thumbnail -->
+		<div class="post-thumbnail d-flex justify-content-center">
+			<i class="bi bi-archive fa-5x"></i>
+		</div>
+		<!-- Post Content -->
+		<div class="post-content">
+			<h5>Trống</h5>
+		</div>
+	</div>
+</div>
+		`);
+		return;
+	}
 	data.forEach(item => {
 		related.append(`
 <div class="col-12 col-md-6 col-lg-4">
@@ -115,7 +132,23 @@ let page = 0;
 const take = 4;
 const getAllComment = () => {
   const allNews = $("#comment-post");
-  $.get(`/api/pages/${id}/comments?page=${page}&take=${take}`, (data) => {
+	$.get(`/api/pages/${id}/comments?page=${page}&take=${take}`, (data) => {
+		if ((page === 0 && data.length === 0)) {
+      allNews.empty();
+      allNews.append(`
+<li class="single_comment_area">
+	<!-- Comment Content -->
+	<div class="comment-content">
+		<!-- Comment Meta -->
+		<div class="comment-meta d-flex align-items-center justify-content-between">
+			<p class="post-author"></p>
+		</div>
+		<h5 class="font-weight-bold">Chưa có bình luận nào</h5>
+	</div>
+</li>
+			`);
+      return;
+    }
     if (data.length === 0) {
       $("#alert")
         .removeClass()

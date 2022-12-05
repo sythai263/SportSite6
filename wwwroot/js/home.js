@@ -5,6 +5,23 @@ const getAllNews = () => {
 	const allNews = $("#all_news");
 	let delay = 0.1;
 	$.get(`/api/news?page=${page}&take=${take}`, (data) => {
+		if ((page === 0 && data.length === 0)) {
+      allNews.empty();
+      allNews.append(`
+<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig"  data-wow-delay="${delay}s">
+	<!-- Post Thumbnail -->
+	<div class="post-thumbnail d-flex justify-content-center">
+		<i class="bi bi-archive fa-5x"></i>
+	</div>
+	<!-- Post Content -->
+	<div class="post-content">
+		<h5>Trống</h5>
+	</div>
+</div>
+			`);
+      return;
+		} 
+		
 		if (data.length === 0) {
 			$("#alert")
         .removeClass()

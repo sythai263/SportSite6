@@ -141,7 +141,7 @@ namespace SportSite6.Controllers
 
 		[HttpGet]
 		[Route("api/pages/{id}/comments")]
-		public async Task<IActionResult> GetComment()
+		public async Task<IActionResult> GetComment(int id)
 		{
 			int take = 5;
 			int page = 1;
@@ -159,6 +159,7 @@ namespace SportSite6.Controllers
 
 			var comments = await _context.Evaluations
 			.OrderByDescending(p => p.id)
+			.Where(c=>c.pageID == id)
 			.Skip(take * page)
 			.Take(take)
 			.ToArrayAsync();

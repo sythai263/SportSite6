@@ -1,12 +1,12 @@
 const id = $("#id-category").text();
 $.getScript("/js/hot-news.js");
 let page = 0;
-const take = 1;
+const take = 5;
 const getAllNews = () => {
   const allNews = $("#all_news");
   let delay = 0.1;
 	$.get(`/api/categories/${id}/news?page=${page}&take=${take}`, (data) => {
-		if (page === 0 && data, length === 0) {
+		if (page === 0 && data.length === 0) {
 			allNews.empty();
 			allNews.append(`
 <div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig"  data-wow-delay="${delay}s">
@@ -15,7 +15,7 @@ const getAllNews = () => {
 		<i class="bi bi-archive fa-5x"></i>
 	</div>
 	<!-- Post Content -->
-	<div class="post-content">
+	<div class="post-content d-flex justify-content-center">
 		<h5>Trống</h5>
 	</div>
 </div>
