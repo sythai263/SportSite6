@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SportSite6.Models;
+using System.Net;
 
 namespace SportSite6.Controllers;
 
@@ -54,11 +55,11 @@ public class HomeController : Controller
 			p.category = category;
 		}
 
-		var pagesRace = await _context.Pages
-			.Where(p => p.categoryID == 6)
+		var pagesAff = await _context.Pages
+			.Where(p => p.categoryID == 3)
 			.OrderByDescending(p => p.id)
 			.Take(count).ToArrayAsync();
-		foreach (Page p in pagesRace)
+		foreach (Page p in pagesAff)
 		{
 			var media = await _context.Medias.Where(m => m.id == p.mediaID).SingleAsync();
 			var category = await _context.Categories.Where(c => c.id == p.categoryID).SingleAsync();
@@ -69,7 +70,7 @@ public class HomeController : Controller
 		ViewData["pagesHeader"] = pages;
 		ViewData["pagesWC"] = pagesWC;
 		ViewData["pagesESport"] = pagesESport;
-		ViewData["pagesRace"] = pagesRace;
+		ViewData["pagesAff"] = pagesAff;
 		ViewData["script"] = "/js/home.js";
 		ViewData["Title"] = "Trang chủ";
 		return View();
@@ -78,21 +79,33 @@ public class HomeController : Controller
 	[Route("tin-tuc/{slug}")]
 	public async Task<IActionResult> SinglePost(string slug)
 	{
-		var page = await _context.Pages.Where(p => p.slug.Contains(slug)).SingleAsync();
+		var page = await _context.Pages.Where(p => p.slug.Equals("/tin-tuc/"+slug)).SingleAsync();
+		page.views += 1;
 		var media = await _context.Medias.Where(m => m.id == page.mediaID).SingleAsync();
 		var category = await _context.Categories.Where(c => c.id == page.categoryID).SingleAsync();
 		page.media = media;
 		page.category = category;
-		// return Json(page);
+		await _context.SaveChangesAsync();
 		ViewData["page"] = page;
 		ViewData["script"] = "/js/single-post.js";
 		ViewData["Title"] = page.title;
 		return View();
 	}
 
-	[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-	public IActionResult Error()
+	[Route("danh-muc/{slug}")]
+	public async Task<IActionResult> CategoryPage(string slug)
 	{
-		return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+		var category = await _context.Categories.Where(p => p.slug.Equals(slug)).SingleAsync();
+		var media = await _context.Medias.Where(m=>m.id == category.mediaID).SingleAsync();
+		category.media = media;
+		ViewData["category"] = category;
+		ViewData["script"] = "/js/category.js";
+		ViewData["Title"] = category.title;
+		return View();
+	}
+
+	[Route("/error")]
+	public IActionResult Error(){
+		return View();
 	}
 }

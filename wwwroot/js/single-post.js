@@ -82,8 +82,12 @@ $("#form-comment").submit(function (event) {
     url: "/api/comments",
     data,
     success: (data) => {
-			$("#alert").text("Đã đăng thành công !");
+			$("#alert")
+        .removeClass()
+        .addClass("alert alert-success text-center inline-block hide")
+        .text("Đã đăng thành công !");
 			$("#comment-post").empty();
+			$("#form-comment").trigger("reset");
 			getAllComment();
       $("#alert")
         .fadeTo(2000, 500)
@@ -91,9 +95,17 @@ $("#form-comment").submit(function (event) {
           $("#alert").slideUp(500);
         });
     },
-    error: function (xhr, ajaxOptions, thrownError) {
-      alert(xhr.status);
-      alert(thrownError);
+    error:  ()=> {
+      $("#alert")
+        .removeClass()
+        .addClass("alert alert-danger text-center inline-block hide")
+        .text("Đăng thất bại, thử lại !");
+      getAllComment();
+      $("#alert")
+        .fadeTo(2000, 500)
+        .slideUp(500, function () {
+          $("#alert").slideUp(500);
+        });
     },
   });
 	
@@ -105,7 +117,10 @@ const getAllComment = () => {
   const allNews = $("#comment-post");
   $.get(`/api/pages/${id}/comments?page=${page}&take=${take}`, (data) => {
     if (data.length === 0) {
-      $("#alert").text("Đã hết bình luận !");
+      $("#alert")
+        .removeClass()
+        .addClass("alert alert-danger text-center inline-block hide")
+        .text("Đã hết bình luận !");
       $("#alert")
         .fadeTo(2000, 500)
         .slideUp(500, function () {
@@ -114,16 +129,16 @@ const getAllComment = () => {
       return;
     }
 		data.forEach((c) => {
-			console.log(c?.user.name);
       allNews.append(`
 <li class="single_comment_area">
 	<!-- Comment Content -->
 	<div class="comment-content">
 		<!-- Comment Meta -->
 		<div class="comment-meta d-flex align-items-center justify-content-between">
-			<p class="post-author">${c?.user.name} <p class="post-author">${c?.createdAt}</p></p>
+			<p class="post-author">${c?.user?.name} đã đăng bình luận lúc ${moment(c?.createdAt).format('lll')}</p>
+			<a href="#" class="comment-reply btn world-btn">Reply</a>
 		</div>
-		<p>${c?.content}</p>
+		<h5 class="font-weight-bold">${c?.content}</h5>
 	</div>
 </li>
 			`);

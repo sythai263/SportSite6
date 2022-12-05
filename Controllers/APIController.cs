@@ -109,6 +109,7 @@ namespace SportSite6.Controllers
 
 			return Json(pages);
 		}
+		
 
 		[HttpPost]
 		[Route("api/comments")]
@@ -169,6 +170,39 @@ namespace SportSite6.Controllers
 			}
 
 			return Json(comments);
+		}
+
+		[Route("api/categories/{id}/news")]
+		public async Task<IActionResult> GetNewsCategory(int id)
+		{
+			var category = await _context.Categories.Where(c=>c.id == id ).SingleAsync();
+
+			int take = 5;
+			int page = 1;
+
+			var query = HttpContext.Request.Query;
+			if (query["take"].ToString() != null)
+			{
+				take = Int32.Parse(query["take"].ToString());
+			}
+
+			if (query["page"].ToString() != null)
+			{
+				page = Int32.Parse(query["page"].ToString());
+			}
+
+			var pages = await _context.Pages
+			.Where(p=>p.categoryID == id)
+			.OrderByDescending(p => p.id)
+			.Skip(take * page)
+			.Take(take)
+			.ToArrayAsync();
+			foreach (Page p in pages)
+			{
+				var media = await _context.Medias.Where(m => m.id == p.mediaID).SingleAsync();
+				p.media = media;
+			}
+			return Json(pages);
 		}
 	}
 }

@@ -8,16 +8,16 @@
 			"slug": "/trang-chu"
 		},
 		{
-			"display": "Bóng đá",
-			"slug": "/bong-da"
+			"display": "Ngoại Hạng Anh",
+			"slug": "/danh-muc/premiere-league"
 		},
 		{
 			"display": "E-Sports",
-			"slug": "/e-sports"
+			"slug": "/danh-muc/e-sports"
 		},
 		{
-			"display": "Đua xe",
-			"slug": "/dua-xe"
+			"display": "World Cup 2022",
+			"slug": "/danh-muc/world-cup"
 		}
 	],
 	"socials": [

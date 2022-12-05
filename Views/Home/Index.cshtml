@@ -3,7 +3,7 @@
 	var pagesHeader = ViewData["pagesHeader"] as Page[];
 	var pagesWC = ViewData["pagesWC"] as Page[];
 	var pagesESport = ViewData["pagesESport"] as Page[];
-	var pagesRace = ViewData["pagesRace"] as Page[];
+	var pagesAff = ViewData["pagesAff"] as Page[];
 	int i = 0;
 } 
 <div class="hero-area">
@@ -183,7 +183,7 @@
 								<div class="row">
 									<div class="col-12 col-md-6">
 										<!-- Single Blog Post -->
-										@foreach (Page item in pagesRace)
+										@foreach (Page item in pagesAff)
 											{
 												<div class="single-blog-post">
 													<!-- Post Thumbnail -->
@@ -209,7 +209,7 @@
 									</div>
 									<div class="col-12 col-md-6">
 										<!-- Single Blog Post -->
-										@foreach (Page item in pagesRace)
+										@foreach (Page item in pagesAff)
 										{
 										<div class="single-blog-post post-style-2 d-flex align-items-center wow fadeInUpBig"
 												 data-wow-delay="0.2s">

@@ -1,24 +1,42 @@
-$.getScript('/js/hot-news.js');
+const id = $("#id-category").text();
+$.getScript("/js/hot-news.js");
 let page = 0;
-const take = 4;
+const take = 1;
 const getAllNews = () => {
-	const allNews = $("#all_news");
-	let delay = 0.1;
-	$.get(`/api/news?page=${page}&take=${take}`, (data) => {
-		if (data.length === 0) {
+  const allNews = $("#all_news");
+  let delay = 0.1;
+	$.get(`/api/categories/${id}/news?page=${page}&take=${take}`, (data) => {
+		if (page === 0 && data, length === 0) {
+			allNews.empty();
+			allNews.append(`
+<div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig"  data-wow-delay="${delay}s">
+	<!-- Post Thumbnail -->
+	<div class="post-thumbnail d-flex justify-content-center">
+		<i class="bi bi-archive fa-5x"></i>
+	</div>
+	<!-- Post Content -->
+	<div class="post-content">
+		<h5>Trống</h5>
+	</div>
+</div>
+			`);
+			return;
+		}
+    if (data.length === 0) {
 			$("#alert")
-        .removeClass()
+				.removeClass()
         .addClass("alert alert-danger text-center inline-block hide")
         .text("Đã hết tin hiển thị !");
-			$("#alert")
+      $("#alert")
         .fadeTo(2000, 500)
         .slideUp(500, function () {
           $("#alert").slideUp(500);
         });
-			return;
+      return;
 		}
-		data.forEach(p => {
-			allNews.append(`
+		
+    data.forEach((p) => {
+      allNews.append(`
 <div class="single-blog-post post-style-4 d-flex align-items-center wow fadeInUpBig"  data-wow-delay="${delay}s">
 	<!-- Post Thumbnail -->
 	<div class="post-thumbnail">
@@ -37,16 +55,15 @@ const getAllNews = () => {
 	</div>
 </div>
 			`);
-			
-		});
-		delay += 0.05;
-	});
-}
+    delay += 0.05;
+    });
+  });
+};
 
 const loadMore = () => {
-	page += 1;
-	getAllNews();
-}
+  page += 1;
+  getAllNews();
+};
 
 $("#load-more").on("click", loadMore);
 getAllNews();

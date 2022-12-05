@@ -21,6 +21,9 @@ public class Category
 	public byte display { get; set; }
 
 	[ForeignKey("media_id")]
+	[Column("media_id", TypeName = "tinyint")]
+	public int mediaID { get; set; }
+
 	public Media? media { get; set; }
 
 }

@@ -11,29 +11,24 @@
 		"subMenu": [
 			{
 				"display": "World Cup 2022",
-				"slug": "/world-cup",
+				"slug": "/danh-muc/world-cup",
 				"id": "worldcup"
 			},
 			{
 				"display": "Cúp C1",
-				"slug": "/cup-c1",
+				"slug": "/danh-muc/cup-c1",
 				"id": "c1"
 			},
 			{
 				"display": "Ngoại Hạng Anh",
-				"slug": "/ngoai-hang-anh",
+				"slug": "/danh-muc/premiere-league",
 				"id": "premiere"
 			}
 		]
 	},
 	{
 		"display": "E-Sport",
-		"slug": "/e-sport",
+		"slug": "/danh-muc/e-sport",
 		"id": "esport"
-	},
-	{
-		"display": "Đua xe",
-		"slug": "/dua-xe",
-		"id": "racing"
 	}
 ]
